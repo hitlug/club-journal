@@ -2,11 +2,9 @@
 
 #newpost(author: "wold9168", title:"ssh 在安装了 GUI 的服务器上无法正常使用 pinentry 的问题")
 
-在安装了 GUI 的服务器上，无法通过 ssh 正常使用 pinentry 的问题是比较广泛的。例如，通过 ssh 进行远程开发时，运行 `git commit --signoff`，相应的鉴权窗口无法弹出，导致 GnuPG 运行失败。这是因为在安装了 GUI 的 Linux 服务器上，系统默认使用 pinentry-qt 等 pinentry GUI，用户无法通过 ssh 完成鉴权。
+在安装了图形界面的服务器上，无法通过 SSH 正常使用 pinentry 进行鉴权是一个常见问题。例如，通过 SSH 远程开发时执行 `git commit --signoff`，相应的身份验证窗口无法弹出，导致 GnuPG 运行失败。这是因为这类服务器默认使用 pinentry-qt 等图形化的 pinentry 程序，而 SSH 会话中无法显示 GUI，用户自然无法完成身份验证。
 
-SuperUser 上有一篇专门论述此问题解决方案的 #link("https://superuser.com/questions/1457167/i-want-to-make-pinentry-use-gui-locally-and-cli-on-ssh")[问答]，就此来观，技术社区的各位倾向的方案是根据当前的环境变量，判断 GnuPG 的运行环境。其中比较优雅者我认为是 #link("https://superuser.com/users/15798/gregor")[\@Gregor] 的这篇 #link("https://superuser.com/a/1761740")[回答]
-
-其解决思路是：创建一个`pinentry`的门户程序，Shell 代码如下：
+SuperUser 上有一篇专门论述此问题解决方案的 #link("https://superuser.com/questions/1457167/i-want-to-make-pinentry-use-gui-locally-and-cli-on-ssh")[问答]，就此来观，技术社区的各位倾向的方案是根据当前的环境变量，判断 GnuPG 的运行环境。其中比较优雅者我认为是 #link("https://superuser.com/users/15798/gregor")[\@Gregor] 的这篇 #link("https://superuser.com/a/1761740")[回答]其解决思路是：创建一个`pinentry`的门户程序，Shell 代码如下：
 
 ```bash
 #!/bin/sh
