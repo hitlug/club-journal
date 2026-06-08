@@ -13,7 +13,7 @@
   lang: _lang,
   region: _region,
 )
-#set par(first-line-indent: 2em)
+#set par(first-line-indent: (amount: 2em, all: true))
 
 #show: ilm.with(
   title: _title,
@@ -24,7 +24,7 @@
   figure-index: (enabled: true),
   table-index: (enabled: true),
   listing-index: (enabled: true),
-  raw-text: "use-typst-default"
+  raw-text: "use-typst-default",
 )
 
 #show link: it => {
@@ -33,7 +33,7 @@
 #show ref: it => {
   text()[#underline(it)]
 }
-#show link: it =>{
+#show link: it => {
   it
   footnote(it.dest)
 }
