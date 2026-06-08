@@ -13,7 +13,7 @@
   lang: _lang,
   region: _region,
 )
-#set par(first-line-indent: (amount: 2em, all: true))
+
 
 #show: ilm.with(
   title: _title,
@@ -26,7 +26,7 @@
   listing-index: (enabled: true),
   raw-text: "use-typst-default",
 )
-
+#set par(first-line-indent: (amount: 2em, all: true))
 #show link: it => {
   text()[#underline(it)]
 }
