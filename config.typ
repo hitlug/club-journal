@@ -4,3 +4,4 @@
 #let _abstract = [HITLUG Journal]
 #let _bibliography = bibliography("refs.bib")
 #let _lang = "zh"
+#let _region = "CN"
