@@ -25,6 +25,12 @@ HITLUG 社刊仓库
 - beta 阶段：为本仓库开启写保护，应用GitHub Flow/GitLab Flow，引入静态网页生成器和CI，完善术语表，完善贡献流程，提供 CLA
 - gamma 阶段：使用定制的半自动化设施进行多格式来源的稿件收录、合并、修订、发版
 
+## Contact
+
+社刊内容上的问题请尽量通过 GitHub Issue 与我们沟通。
+
+其他联系方式，请翻阅社团网站上的[联系方式](https://hitlug.org/about.html#联系方式)页面。
+
 ## License
 
 若未经特别说明，则本仓库下所有文章均以 CC BY 4.0 International 协议发布。作者保留所有权利。
