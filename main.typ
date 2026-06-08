@@ -24,6 +24,7 @@
   figure-index: (enabled: true),
   table-index: (enabled: true),
   listing-index: (enabled: true),
+  raw-text: "use-typst-default"
 )
 
 #show link: it => {
@@ -32,5 +33,8 @@
 #show ref: it => {
   text()[#underline(it)]
 }
-
+#show link: it =>{
+  it
+  footnote(it.dest)
+}
 #include "outline.typ"
