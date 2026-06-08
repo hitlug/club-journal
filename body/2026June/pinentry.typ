@@ -1,0 +1,46 @@
+#import "../../snippet/funct.typ":*
+
+#newpost(author: "wold9168", title:"ssh 在安装了 GUI 的服务器上无法正常使用 pinentry 的问题")
+
+在安装了 GUI 的服务器上，无法通过 ssh 正常使用 pinentry 的问题是比较广泛的。例如，通过 ssh 进行远程开发时，运行 `git commit --signoff`，相应的鉴权窗口无法弹出，导致 GnuPG 运行失败。这是因为在安装了 GUI 的 Linux 服务器上，系统默认使用 pinentry-qt 等 pinentry GUI，用户无法通过 ssh 完成鉴权。
+
+SuperUser 上有一篇专门论述此问题解决方案的 #link("https://superuser.com/questions/1457167/i-want-to-make-pinentry-use-gui-locally-and-cli-on-ssh")[问答]，就此来观，技术社区的各位倾向的方案是根据当前的环境变量，判断 GnuPG 的运行环境。其中比较优雅者我认为是 #link("https://superuser.com/users/15798/gregor")[\@Gregor] 的这篇 #link("https://superuser.com/a/1761740")[回答]
+
+其解决思路是：创建一个`pinentry`的门户程序，Shell 代码如下：
+
+```bash
+#!/bin/sh
+# By defaulting to this alternative, we could place this script
+# at /usr/bin/pinentry to avoid extra configuration elsewhere,
+# however, it might be overwritten by upgrades.
+pe=/etc/alternatives/pinentry
+bin=/usr/bin
+case "$PINENTRY_USER_DATA" in
+*USE_TTY*)  pe=$bin/pinentry-tty  ;;
+*USE_CURSES*)   pe=$bin/pinentry-curses ;;
+*USE_GTK2*) pe=$bin/pinentry-gtk-2 ;;
+*USE_GNOME3*)   pe=$bin/pinentry-gnome3 ;;
+*USE_X11*)  pe=$bin/pinentry-x11 ;;
+*USE_QT*)   pe=$bin/pinentry-qt ;;
+esac
+exec $pe "$@"
+```
+
+在 `~/.gnupg/gpg-agent.conf` 中设置此门户程序为 `pinentry-program`，即：
+
+```
+# gpg-agent.conf
+pinentry-program bin/pinentry-auto # 于我而言，这里填写 $HOME/.local/bin/pinentry-auto
+```
+
+然后通过`.bash_profile`、`.zshrc`等方式，为`$SSH_CLIENT`环境变量添加一个判断逻辑：
+
+```bash
+if [ "$SSH_CLIENT" ]; then
+   # I have logged in via SSH
+   export PINENTRY_USER_DATA=USE_CURSES
+   export GPG_TTY=$(tty)
+fi
+```
+
+我目前使用这一方案，十分良好地解决了 ssh 连上远程机器以后 GnuPG 无法鉴权的问题。
