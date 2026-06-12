@@ -25,16 +25,24 @@
 
 #let unify_artitype(artitype) = {
   if type(artitype) != str {
-    return str("[Warn] unified_artitype: the type of artitype is illegal!")
+    return str("[Error] unify_artitype: 文章类型参数错误")
   }
   if artitype == "post" {
     return "post"
-  } else if artitype == "news" {
+  } else if artitype == "news/tech" {
     return "技术资讯"
+  } else if artitype == "news/club" {
+    return "社团资讯"
+  } else if artitype == "news/campus" {
+    return "校园资讯"
   } else if artitype == "brief" {
     return "简讯"
   } else if artitype == "paper" {
     return "论文分享"
+  } else if artitype == "misc" {
+    return "杂项"
+  } else {
+    return "[Error] unify_artitype: 未分类"
   }
 }
 
