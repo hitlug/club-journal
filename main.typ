@@ -4,11 +4,10 @@
 
 #set text(
   font: (
-    (name: "BlexMono Nerd Font", covers: "latin-in-cjk"),
-    (name: "FiraCode Nerd Font", covers: "latin-in-cjk"),
-    (name: "IBM Plex Mono", covers: "latin-in-cjk"),
-    "Source Han Serif",
-    "FandolSong",
+    _code_font,
+    .._code_font_fallback,
+    _serif_font,
+    .._serif_font_fallback,
   ),
   lang: _lang,
   region: _region,
