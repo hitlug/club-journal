@@ -32,7 +32,6 @@
     artitype = str("post")
   }
   let unified_artitype = unify_artitype(str(artitype))
-  pagebreak()
   [#heading(
       level: 2,
       numbering: none,
