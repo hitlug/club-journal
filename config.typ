@@ -1,7 +1,7 @@
-#let _title = [HITLUG 社刊]
-#let _authors = "HITLUG"
+#let _title = [HITLUG 文章归档]
+#let _authors = "HIT Linux User Group (HITLUG)"
 #let _date = datetime.today()
-#let _abstract = [HITLUG Journal]
+#let _abstract = [HITLUG Archive]
 #let _bibliography = bibliography("refs.bib")
 #let _lang = "zh"
 #let _region = "CN"
