@@ -1,6 +1,6 @@
 #import "../../snippet/funct.typ":*
 
-#newpost(author: "wold9168", title:"ssh 在安装了 GUI 的服务器上无法正常使用 pinentry 的问题")
+#newpost(author: "wold9168", title:"ssh 在安装了 GUI 的服务器上无法正常使用 pinentry 的问题")[
 
 在安装了图形界面的服务器上，无法通过 SSH 正常使用 pinentry 进行鉴权是一个常见问题。例如，通过 SSH 远程开发时执行 `git commit --signoff`，相应的身份验证窗口无法弹出，导致 GnuPG 运行失败。这是因为这类服务器默认使用 pinentry-qt 等图形化的 pinentry 程序，而 SSH 会话中无法显示 GUI，用户自然无法完成身份验证。
 
@@ -42,3 +42,4 @@ fi
 ```
 
 我目前使用这一方案，十分良好地解决了 ssh 连上远程机器以后 GnuPG 无法鉴权的问题。
+]

@@ -1,6 +1,6 @@
 #import "../../snippet/funct.typ":*
 
-#newpost(author: "wold9168", title:"Makefile 里快速插入帮助信息的一种方案")
+#newpost(author: "wold9168", title:"Makefile 里快速插入帮助信息的一种方案")[
 
 写毕设的期间大量阅读代码，在 #link("https://github.com/tailscale/tailscale/")[Tailscale] 的仓库里看到颇为有趣的一个 Makefile Target：
 
@@ -41,4 +41,4 @@ Specify a command. The choices are:
 
 `.DEFAULT_GOAL` 这个变量也有意思，指定了 Makefile 默认的 Target。所以上面执行`make`的时候都没加`help`这个 Target。
 
-挺好用的。
+挺好用的。]
