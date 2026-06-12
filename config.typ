@@ -5,3 +5,4 @@
 #let _bibliography = bibliography("refs.bib")
 #let _lang = "zh"
 #let _region = "CN"
+#let _sans_font = "WenQuanYi Micro Hei Mono"

@@ -1,4 +1,15 @@
+#import "/config.typ": *
 #let _assetroot = "../assets"
+
+// 排版专有名词
+// 暂且用来排版标题前面的文章类型提示符
+#let typographic_proper_noun(content) = {
+  box(baseline: 15%)[#rect(fill: black, height: auto, inset: 0.2em)[#text(
+    font: _sans_font,
+    size: 0.8em,
+    fill: white,
+  )[#content]]]
+}
 
 #let volumecover(date: str, image-path: [image], caption: str) = {
   page()[
@@ -35,7 +46,7 @@
   [#heading(
       level: 2,
       numbering: none,
-    )[#unified_artitype: #title]
+    )[#typographic_proper_noun[技术资讯]: #title]
     #align(right)[#block(fill: luma(240))[by #author]]
     #content]
 }
