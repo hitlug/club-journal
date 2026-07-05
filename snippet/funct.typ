@@ -54,7 +54,7 @@
   [#heading(
       level: 2,
       numbering: none,
-    )[#typographic_proper_noun[技术资讯]: #title]
+    )[#typographic_proper_noun[#unified_artitype]: #title]
     #align(right)[#block(fill: luma(240))[by #author]]
     #content]
 }
