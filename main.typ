@@ -1,6 +1,6 @@
 #import "config.typ": *
 #import "@preview/ilm:2.0.0": *
-#import "@preview/mitex:0.2.5": *
+#import "@preview/mitex:0.2.7": *
 
 #set text(
   font: (
